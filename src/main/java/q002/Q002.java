@@ -1,5 +1,8 @@
 package q002;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 /**
  * Q002 並べ替える
  *
@@ -45,5 +48,22 @@ public class Q002 {
             "14,林",
             "9,清水"
     };
+
+    public static void main(String[] args) {
+        Arrays.sort(dataList, comparator);
+        System.out.println(Arrays.asList(dataList));
+    }
+
+    static Comparator<String> comparator = new Comparator<>() {
+        static final String DELIMITER = ",";
+
+        @Override
+        public int compare(String s1, String s2) {
+            // ID部分のみを抽出して比較
+            int n1 = Integer.parseInt(s1.split(DELIMITER)[0]);
+            int n2 = Integer.parseInt(s2.split(DELIMITER)[0]);
+            return Integer.compare(n1, n2);
+        }
+    };
 }
-// 完成までの時間: xx時間 xx分
+// 完成までの時間: 00時間 50分
